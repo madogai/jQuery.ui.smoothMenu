@@ -1,7 +1,7 @@
 ﻿/// <reference path="jquery-1.5.js" />
 /*!
 * smoothMenu addon for jQuery UI
-* Copyright 2011, Masahiko Hirota
+* Copyright 2011, まどがい
 * license MIT-style License.
 *
 * Inspired by MenuMatic
