@@ -7,7 +7,7 @@
 * Inspired by MenuMatic
 * http://greengeckodesign.com/menumatic
 */
-(function () {
+(function ($, undefined) {
 	var isNumber = function (value) {
 		return typeof value === "number" && isFinite(value);
 	};
@@ -181,4 +181,4 @@
 		version: "0.2.0"
 	});
 
-})();
+})(jQuery);
