@@ -1,6 +1,6 @@
 ﻿# smoothMenu addon for jQuery UI
 
-# license
+## license
 
 Copyright 2011, まどがい
 license MIT-style License.
