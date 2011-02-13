@@ -95,8 +95,8 @@
 	<script type="text/javascript">
 		$(function () {
 			$('#smooth_menu > li').smoothMenu({
-				beforeShow: function () {
-					return false;
+				beforeShow: function (event) {
+					event.preventDefault();
 				}
 			});
 		});

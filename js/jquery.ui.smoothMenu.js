@@ -1,6 +1,6 @@
 ﻿/// <reference path="jquery-1.5.js" />
 /*!
-* smoothMenu addon for jQuery UI
+* SmoothMenu addon for jQuery UI
 * Copyright 2011, まどがい
 * license MIT-style License.
 *
@@ -11,8 +11,7 @@
 * Inspired by MenuMatic
 * http://greengeckodesign.com/menumatic
 */
-//(function ($, undefined) {
-(function () {
+(function ($, undefined) {
 	var isNumber = function (value) {
 		return typeof value === "number" && isFinite(value);
 	};
@@ -56,6 +55,25 @@
 				}
 			});
 
+			options.defaultCss = {
+				marginLeft: $parent.css('marginLeft'),
+				marginTop: $parent.css('marginTop'),
+				opacity: $parent.css('opacity'),
+				visibility: $parent.css('visibility')
+			};
+
+			$elm.addClass('ui-widget ui-state-default ui-widget-content').bind(self._wrapToWidgetEvent('mouseenter'), function (event) {
+				$elm.addClass('ui-state-hover');
+				self._mouseEnter(event);
+				$(this).smoothMenu('show');
+			}).bind(self._wrapToWidgetEvent('mouseleave'), function (event) {
+				$elm.removeClass('ui-state-hover');
+				self._mouseLeave(event);
+				setTimeout(function () {
+					$elm.smoothMenu('hide');
+				}, options.delay);
+			});
+
 			if ($parent.length > 0) {
 				var height = $parent.outerHeight(true);
 				var width = $parent.outerWidth(true);
@@ -78,25 +96,6 @@
 				options.container = $();
 			}
 
-			options.defaultCss = {
-				marginLeft: $parent.css('marginLeft'),
-				marginTop: $parent.css('marginTop'),
-				opacity: $parent.css('opacity'),
-				visibility: $parent.css('visibility')
-			};
-
-			$elm.addClass('ui-state-default ui-widget-content').bind(self._wrapToWidgetEvent('mouseenter'), function (event) {
-				$elm.addClass('ui-state-hover');
-				self._mouseEnter(event);
-				$(this).smoothMenu('show');
-			}).bind(self._wrapToWidgetEvent('mouseleave'), function (event) {
-				$elm.removeClass('ui-state-hover');
-				self._mouseLeave(event);
-				setTimeout(function () {
-					$elm.smoothMenu('hide');
-				}, options.delay);
-			});
-
 			$elm.smoothMenu('hide', 0);
 		},
 
@@ -105,7 +104,7 @@
 			var options = self.options;
 			var $elm = self.element;
 
-			$elm.removeClass('ui-state-default ui-state-hover ui-widget-content')
+			$elm.removeClass('ui-widget ui-state-default ui-state-hover ui-widget-content')
 
 			$elm.unbind('.' + self.widgetEventPrefix);
 			var $container = options.container;
