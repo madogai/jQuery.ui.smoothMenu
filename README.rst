@@ -1,23 +1,19 @@
 ﻿SmoothMenu addon for jQuery UI
 ******************************
 
-License
+Summary
 =======
 
-Copyright 2011, まどがい
-
-MIT-style License.
-
-Inspired by MenuMatic
-
-http://greengeckodesign.com/menumatic
+| Copyright 2011, まどがい
+| MIT-style License.
+| Inspired by MenuMatic
+| http://greengeckodesign.com/menumatic
 
 Description
 ===========
 
-MooToolsのMenuMaticに近い動きを実装したjQueryPluginです。
-
-以下のような機能を実装しています。
+| MooToolsのMenuMaticに近い動きを実装したjQueryPluginです。
+| 以下のような機能を実装しています。
 
 * 階層メニュー
 * 縦置き、および横置きメニュー
