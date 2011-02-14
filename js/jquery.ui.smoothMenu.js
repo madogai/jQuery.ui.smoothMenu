@@ -84,7 +84,6 @@
 					height: String(height) + 'px',
 					overflow: 'hidden',
 					position: 'absolute',
-					width: String(width) + 'px',
 					zIndex: options.zIndex
 				}).bind(self._wrapToWidgetEvent('mouseenter'), function (event) {
 					self._mouseEnter(event);
@@ -92,6 +91,10 @@
 					self._mouseLeave(event);
 				}).append($parent).appendTo($rootContainer);
 				options.container = $container;
+				// Widthは後から設定しないとWebkit系で表示が崩れます。
+				$container.css({
+					width: String($parent.outerWidth(true)) + 'px'
+				});
 			} else {
 				options.container = $();
 			}

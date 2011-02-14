@@ -92,12 +92,14 @@
 	<button onclick="$('#smooth_menu > li').smoothMenu('enable');">Enable</button>
 	<button onclick="$('#smooth_menu > li').smoothMenu('disable');">Disabled</button>
 	<button onclick="$('#smooth_menu > li').smoothMenu('destroy');">Destroy</button>
+	<button onclick="$('#smooth_menu > li:first').smoothMenu('show');">Show</button>
 	<script type="text/javascript">
 		$(function () {
 			$('#smooth_menu > li').smoothMenu({
 				beforeShow: function (event) {
-					event.preventDefault();
-				}
+//					event.preventDefault();
+				},
+				direction: 'vertical'
 			});
 		});
 	</script>
