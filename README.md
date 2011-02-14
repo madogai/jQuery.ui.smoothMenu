@@ -27,8 +27,8 @@ Required
 
 jQuery v1.4.x or heigher
 jQuery UI v1.8.x or heigher
-	jquery.ui.core.js
-	jquery.ui.widget.js
+  jquery.ui.core.js
+  jquery.ui.widget.js
 
 Usage
 ---
