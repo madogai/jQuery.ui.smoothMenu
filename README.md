@@ -22,6 +22,10 @@ MooToolsのMenuMaticに近い動きを実装したjQueryPluginです。
 * ThemeRoller
 * Enable, Disable, Destroy
 
+Demo
+---
+<http://madguy.github.com/jQuery.ui.smoothMenu/>
+
 Required
 ---
 
