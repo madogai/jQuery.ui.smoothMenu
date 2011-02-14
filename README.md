@@ -33,7 +33,7 @@ Required
 Usage
 ---
 
-$('#root > li').smoothMenu();
+    $('#root > li').smoothMenu();
 
 Advertisement
 ---
