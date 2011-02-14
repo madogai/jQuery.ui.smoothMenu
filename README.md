@@ -7,8 +7,8 @@ License
 Copyright 2011, まどがい
 MIT-style License.
 
-Inspired by MenuMatic
-http://greengeckodesign.com/menumatic
+Inspired by MenuMatic  
+[http://greengeckodesign.com/menumatic](http://greengeckodesign.com/menumatic)
 
 Description
 ---
@@ -40,5 +40,5 @@ Advertisement
 
 作者は以下のサイトを運営しています。よければご覧ください。
 
-*ToNaMeT*
-[http://www.tonamet.com]
+*ToNaMeT*  
+[http://www.tonamet.com](http://www.tonamet.com)
