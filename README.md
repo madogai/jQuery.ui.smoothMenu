@@ -57,7 +57,7 @@ Usage
 Options
 ---
 
-name|type|default|description
+Name|Type|Default|Description
 ---|---|---|---
 childTag|String|'li'|リストの要素タグを指定します。
 delay|Number|1000|マウスが要素から離れてから要素が消えるまでの時間です。(ミリ秒)
@@ -73,55 +73,29 @@ zIndex|Number|1|ウィジェットのz-index指定です。子要素になるた
 Method
 ---
 
-destroy	.smoothMenu('destroy')
-: ウィジェットを削除して初期状態に戻します。
-
-disable	.smoothMenu('disable')
-: ウィジェットを無効化します。
-
-content .smoothMenu('content')
-: ウィジェットに紐づいている要素リストを取得します。
-
-enable	.smoothMenu('enable')
-: ウィジェットを有効化します。
-
-hide .smoothMenu('hide', [duration])
-: ウィジェットを表示します。durationにより非表示速度を指定できます。
-
-option	.smoothMenu('option' , optionName , [value])
-: オプション名を指定して、オプションの取得/設定を行います。
-
-option	.smoothMenu('option' , options)
-: オプションを一括して設定します。
-
-rootContainer .smoothMenu('rootContainer')
-: ウィジェットを格納しているコンテナ要素を取得します。
-
-show .smoothMenu('show', [duration])
-: ウィジェットを表示します。durationにより表示速度を指定できます。
-
-widget .smoothMenu('widget')
-: ウィジェット自身を取得します。
-
+Name|Usage|Description
+---|---|---
+destroy|.smoothMenu('destroy')|ウィジェットを削除して初期状態に戻します。
+disable|.smoothMenu('disable')|ウィジェットを無効化します。
+content|.smoothMenu('content')|ウィジェットに紐づいている要素リストを取得します。
+enable|.smoothMenu('enable')|ウィジェットを有効化します。
+hide|.smoothMenu('hide', [duration])|ウィジェットを表示します。durationにより非表示速度を指定できます。
+option|.smoothMenu('option' , optionName , [value])|オプション名を指定して、オプションの取得/設定を行います。
+option|.smoothMenu('option' , options)|オプションを一括して設定します。
+rootContainer|.smoothMenu('rootContainer')|ウィジェットを格納しているコンテナ要素を取得します。
+show|.smoothMenu('show', [duration])|ウィジェットを表示します。durationにより表示速度を指定できます。
+widget|.smoothMenu('widget')|ウィジェット自身を取得します。
 
 Event
 ---
-create Type: smoothmenucreate
-: ウィジェットの作成時に発生するイベントです。
 
-beforeShow Type: smoothmenubeforeshow
-: リストが開かれる前に発生するイベントです。event.preventDefault()を呼ぶか、falseをreturnすると動作を中断できます。
-
-onShow Type: smoothmenuonshow
-: リストが開かれた後に発生するイベントです。
-
-beforeHide Type: smoothmenubeforehide
-: リストが閉じられる前に発生するイベントです。event.preventDefault()を呼ぶか、falseをreturnすると動作を中断できます。
-
-onHide Type: smoothmenuberonhide
-: リストが閉じられた後に発生するイベントです。
-
-
+Name|Type|Description
+---|---|---
+create|smoothmenucreate|ウィジェットの作成時に発生するイベントです。
+beforeShow|smoothmenubeforeshow|リストが開かれる前に発生するイベントです。event.preventDefault()を呼ぶか、falseをreturnすると動作を中断できます。
+onShow|smoothmenuonshow|リストが開かれた後に発生するイベントです。
+beforeHide|smoothmenubeforehide|リストが閉じられる前に発生するイベントです。event.preventDefault()を呼ぶか、falseをreturnすると動作を中断できます。
+onHide|smoothmenuberonhide|リストが閉じられた後に発生するイベントです。
 
 Advertisement
 ---
