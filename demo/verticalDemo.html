@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>SmoothMenu</title>
-	<link href="../css/smoothness/jquery-ui-1.8.9.custom.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" href="../css/jquery-ui-smoothMenu.css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="http://jqueryui.com/themes/base/ui.all.css" />
 	<style type="text/css">
 		ul {
 			list-style-type: none;
@@ -10,15 +11,15 @@
 			padding: 0;
 		}
 		
-		#smooth_menu {
+		.smooth_menu {
 			width: 128px;
 		}
 		
-		#smooth_menu > li a {
+		.smooth_menu > li a {
 			display: block;
 		}
 		
-		#smooth_menu > li ul,
+		.smooth_menu > li ul,
 		#ui_smooth_menu_container > div > ul {
 			width: 176px;
 		}
@@ -27,18 +28,25 @@
 			display: block;
 		}
 		
-		ul.clearfix > li:last-child:after {
+		ul.clearfix:after {
 			content: "";
 			display: block;
 			clear: both;
 		}
 	</style>
-	<script type="text/javascript" src="../js/jquery-1.5.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-ui-1.8.9.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.ui.smoothMenu.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#switcher').themeswitcher({
+				loadTheme: 'UI lightness'
+			});
+		});
+	</script>
 </head>
 <body>
-	<ul id="smooth_menu" class="clearfix">
+	<ul id="smooth_menu_1" class="smooth_menu clearfix">
 		<li>
 			<a href="#">MenuItem1</a>
 			<ul>
@@ -88,13 +96,43 @@
 			</ul>
 		</li>
 	</ul>
-	<button onclick="$('#smooth_menu > li').smoothMenu('enable');">Enable</button>
-	<button onclick="$('#smooth_menu > li').smoothMenu('disable');">Disabled</button>
-	<button onclick="$('#smooth_menu > li').smoothMenu('destroy');">Destroy</button>
+	<button onclick="$('#smooth_menu_1 > li').smoothMenu('enable');">Enable</button>
+	<button onclick="$('#smooth_menu_1 > li').smoothMenu('disable');">Disabled</button>
+	<button onclick="$('#smooth_menu_1 > li:first').smoothMenu('show');">Show</button>
+	<button onclick="$('#smooth_menu_1 > li:first').smoothMenu('hide');">Hide</button>
+	<button onclick="$('#smooth_menu_1 > li').smoothMenu('destroy');">Destroy</button>
 	<script type="text/javascript">
 		$(function () {
-			$('#smooth_menu > li').smoothMenu({	});
+			$('#smooth_menu_1 > li').smoothMenu({
+				direction: 'vertical',
+				zIndex: 10
+			});
 		});
 	</script>
+	<br />
+	<br />
+	<ul id="smooth_menu_2" class="smooth_menu clearfix">
+		<li>
+			<a href="#">MenuItem1</a>
+			<ul>
+				<li><a href="#">Item1</a></li>
+				<li><a href="#">Item2</a></li>
+				<li><a href="#">Item3</a></li>
+			</ul>
+		</li>
+		<li><a href="#">MenuItem2</a></li>
+		<li><a href="#">MenuItem3</a></li>
+	</ul>
+	<script type="text/javascript">
+		$(function () {
+			$('#smooth_menu_2 > li').smoothMenu({
+				direction: 'vertical',
+				icon: false
+			});
+		});
+	</script>
+	<br />
+	<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+	<div id="switcher"></div>
 </body>
 </html>

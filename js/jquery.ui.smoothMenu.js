@@ -31,6 +31,7 @@
 			dockId: 'ui_smooth_menu_container',
 			duration: 200,
 			easing: 'swing',
+			icon: true,
 			opacity: 0.95,
 			parentTag: 'ul',
 			zIndex: 1
@@ -40,20 +41,21 @@
 			var self = this;
 			var options = self.options;
 			var $elm = self.element;
-			var $rootContainer = self.rootContainer();
+			var $rootContainer = self._getOrCreateContainer();
 			var $parent = $elm.children(options.parentTag + ':first');
 
 			// 再帰的に子要素を探索して、子要素から先にコンテナに入れます。
 			var childOption = $.extend({}, options, {
-				direction: 'horizontal',
+				direction: 'vertical',
 				zIndex: options.zIndex + 1
 			});
 			// 子要素まですべて適用してからbindしないと先にイベントが動いてしまうため、あとからイベントを付加します。
-			options.childNodes = $parent.children(options.childTag).smoothMenu(childOption).bind({
+			var $childNodes = $parent.children(options.childTag).smoothMenu(childOption).bind({
 				smoothmenuonhide: function (event, $elm) {
 					self.hide();
 				}
 			});
+			options.childNodes = $childNodes;
 
 			options.defaultCss = {
 				marginLeft: $parent.css('marginLeft'),
@@ -62,8 +64,10 @@
 				visibility: $parent.css('visibility')
 			};
 
-			$elm.addClass('ui-widget ui-state-default ui-widget-content').bind(self._wrapToWidgetEvent('mouseenter'), function (event) {
-				$elm.addClass('ui-state-hover');
+			$elm.addClass('ui-smoothMenu-item ui-widget ui-corner-all ui-state-default').bind(self._wrapToWidgetEvent('mouseenter'), function (event) {
+				if (options.disabled === false) {
+					$elm.addClass('ui-state-hover');
+				}
 				self._mouseEnter(event);
 				$(this).smoothMenu('show');
 			}).bind(self._wrapToWidgetEvent('mouseleave'), function (event) {
@@ -75,13 +79,8 @@
 			});
 
 			if ($parent.length > 0) {
-				var height = $parent.outerHeight(true);
-				var width = $parent.outerWidth(true);
-				var $container = $('<div />', {
-					'class': '.ui-widget-content'
-				}).css({
+				var $container = $('<div />').css({
 					display: 'none',
-					height: String(height) + 'px',
 					overflow: 'hidden',
 					position: 'absolute',
 					zIndex: options.zIndex
@@ -91,10 +90,12 @@
 					self._mouseLeave(event);
 				}).append($parent).appendTo($rootContainer);
 				options.container = $container;
-				// Widthは後から設定しないとWebkit系で表示が崩れます。
-				$container.css({
-					width: String($parent.outerWidth(true)) + 'px'
-				});
+
+				if (options.icon) {
+					var iconClass = options.direction === 'horizontal' ? 'ui-icon-triangle-1-s' : 'ui-icon-triangle-1-e';
+					var $icon = $('<span class="ui-icon" />').addClass(iconClass);
+					$elm.append($icon);
+				}
 			} else {
 				options.container = $();
 			}
@@ -107,9 +108,9 @@
 			var options = self.options;
 			var $elm = self.element;
 
-			$elm.removeClass('ui-widget ui-state-default ui-state-hover ui-widget-content')
+			$elm.removeClass('ui-smoothMenu-item ui-widget ui-corner-all ui-state-default').unbind('.' + self.widgetEventPrefix);
+			$elm.find('.ui-icon').remove();
 
-			$elm.unbind('.' + self.widgetEventPrefix);
 			var $container = options.container;
 
 			// 子要素を再帰的に復元します。
@@ -124,8 +125,25 @@
 			return self;
 		},
 
+		enable: function () {
+			var $childNodes = this.options.childNodes;
+			$childNodes.smoothMenu('enable');
+			$.Widget.prototype.enable.call(this);
+		},
+
+		disable: function () {
+			var $childNodes = this.options.childNodes;
+			$childNodes.smoothMenu('disable');
+			this.hide();
+			$.Widget.prototype.disable.call(this);
+		},
+
 		rootContainer: function () {
 			return this._getOrCreateContainer();
+		},
+
+		childs: function () {
+			return this.options.childNodes;
 		},
 
 		show: function (duration) {
@@ -152,20 +170,28 @@
 			}
 
 			var offset = $elm.offset();
-			var extendWidth = options.direction === 'horizontal' ? $elm.outerWidth(true) : 0;
+			var extendWidth = options.direction !== 'horizontal' ? $elm.outerWidth(true) : 0;
 			var extendHeight = (function () {
-				if (options.direction !== 'horizontal') {
+				if (options.direction === 'horizontal') {
 					return $elm.outerHeight(true);
 				} else {
 					var containerHeight = $container.outerHeight(true) || 0;
-					var windowHeight = $(window).height();
-					return Math.min(windowHeight - (offset.top + containerHeight), 0);
+					var documentHeight = $(document).height();
+					return Math.min(documentHeight - (offset.top + containerHeight), 0);
 				}
 			})();
+			// 先にコンテナは表示状態にする必要があります。
+			$container.show();
+			// 表示要素を図らないと正確に大きさが取得できない場合があるので、こういう取り方をします。
+			var $childNodes = options.childNodes;
+			var height = ($childNodes.outerHeight(true) || 0) * $childNodes.length;
+			var width = ($childNodes.outerWidth(true) || 0);
 			$container.css({
 				left: String(offset.left + extendWidth) + 'px',
-				top: String(offset.top + extendHeight) + 'px'
-			}).show();
+				height: String(height) + 'px',
+				top: String(offset.top + extendHeight) + 'px',
+				width: String(width) + 'px'
+			});
 
 			$parent.stop(true).animate({
 				marginLeft: '0px',
@@ -206,8 +232,8 @@
 				return;
 			}
 
-			var marginLeft = options.direction === 'horizontal' ? -1 * $container.outerWidth() : 0;
-			var marginTop = options.direction !== 'horizontal' ? -1 * $container.outerHeight() : 0;
+			var marginLeft = options.direction !== 'horizontal' ? -1 * $container.outerWidth() : 0;
+			var marginTop = options.direction === 'horizontal' ? -1 * $container.outerHeight() : 0;
 
 			$parent.stop(true).animate({
 				marginLeft: String(marginLeft) + 'px',
@@ -276,7 +302,7 @@
 	});
 
 	$.extend($.ui.smoothMenu, {
-		version: "0.2.0"
+		version: "0.2.1"
 	});
 
 })(jQuery);

@@ -64,26 +64,6 @@
 					<ul>
 						<li><a href="#">SubItem4</a></li>
 						<li><a href="#">SubItem5</a></li>
-						<li>
-							<a href="#">SubItem6</a>
-							<ul>
-								<li><a href="#">SubSubItem1</a></li>
-								<li><a href="#">SubSubItem2</a></li>
-								<li><a href="#">SubSubItem3</a></li>
-								<li><a href="#">SubSubItem4</a></li>
-								<li><a href="#">SubSubItem5</a></li>
-								<li><a href="#">SubSubItem6</a></li>
-								<li><a href="#">SubSubItem7</a></li>
-								<li><a href="#">SubSubItem8</a></li>
-								<li><a href="#">SubSubItem9</a></li>
-								<li><a href="#">SubSubItem10</a></li>
-								<li><a href="#">SubSubItem11</a></li>
-								<li><a href="#">SubSubItem12</a></li>
-								<li><a href="#">SubSubItem13</a></li>
-								<li><a href="#">SubSubItem14</a></li>
-								<li><a href="#">SubSubItem15</a></li>
-							</ul>
-						</li>
 					</ul>
 				</li>
 			</ul>
@@ -97,15 +77,13 @@
 			</ul>
 		</li>
 	</ul>
-	<button onclick="$('#smooth_menu_1 > li').smoothMenu('enable');">Enable</button>
-	<button onclick="$('#smooth_menu_1 > li').smoothMenu('disable');">Disabled</button>
-	<button onclick="$('#smooth_menu_1 > li:first').smoothMenu('show');">Show</button>
-	<button onclick="$('#smooth_menu_1 > li:first').smoothMenu('hide');">Hide</button>
-	<button onclick="$('#smooth_menu_1 > li').smoothMenu('destroy');">Destroy</button>
 	<script type="text/javascript">
 		$(function () {
 			$('#smooth_menu_1 > li').smoothMenu({
-				zIndex: 10
+				zIndex: 10,
+				beforeShow: function (event) {
+					event.preventDefault();
+				}
 			});
 		});
 	</script>
@@ -125,7 +103,9 @@
 	<script type="text/javascript">
 		$(function () {
 			$('#smooth_menu_2 > li').smoothMenu({
-				icon: false
+				beforeHide: function () {
+					return false;
+				}
 			});
 		});
 	</script>
