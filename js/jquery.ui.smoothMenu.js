@@ -2,7 +2,7 @@
 /*!
 * SmoothMenu addon for jQuery UI
 * Copyright 2011, まどがい
-* license MIT-style License.
+* License MIT-style License.
 *
 * Depends:
 *   jquery.ui.core.js
@@ -43,6 +43,7 @@
 			var $elm = self.element;
 			var $rootContainer = self._getOrCreateContainer();
 			var $parent = $elm.children(options.parentTag + ':first');
+			options.parentNode = $parent;
 
 			// 再帰的に子要素を探索して、子要素から先にコンテナに入れます。
 			var childOption = $.extend({}, options, {
@@ -108,6 +109,10 @@
 			var options = self.options;
 			var $elm = self.element;
 
+			if (options.disabled) {
+				self.enable();
+			}
+
 			$elm.removeClass('ui-smoothMenu-item ui-widget ui-corner-all ui-state-default').unbind('.' + self.widgetEventPrefix);
 			$elm.find('.ui-icon').remove();
 
@@ -142,8 +147,8 @@
 			return this._getOrCreateContainer();
 		},
 
-		childs: function () {
-			return this.options.childNodes;
+		content: function () {
+			return this.options.parentNode;
 		},
 
 		show: function (duration) {
@@ -302,7 +307,7 @@
 	});
 
 	$.extend($.ui.smoothMenu, {
-		version: "0.2.1"
+		version: '0.2.3'
 	});
 
 })(jQuery);
