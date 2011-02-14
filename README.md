@@ -4,7 +4,7 @@
 License
 ---
 
-Copyright 2011, まどがい
+Copyright 2011, まどがい  
 MIT-style License.
 
 Inspired by MenuMatic  
@@ -25,11 +25,10 @@ MooToolsのMenuMaticに近い動きを実装したjQueryPluginです。
 Required
 ---
 
-jQuery v1.4.x or heigher
-jQuery UI v1.8.x or heigher
-
-* jquery.ui.core.js
-* jquery.ui.widget.js
+* jQuery v1.4.x or heigher
+* jQuery UI v1.8.x or heigher
+    * jquery.ui.core.js
+    * jquery.ui.widget.js
 
 Usage
 ---
