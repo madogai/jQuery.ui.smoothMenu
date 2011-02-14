@@ -1,0 +1,21 @@
+﻿#container {
+	margin: 0 auto;
+	width: 700px;
+}
+
+h1 {
+	font-size: 140%;
+	color: #E0691A;
+}
+
+h1 a {
+	color: #E0691A;
+}
+
+#switcher {
+	margin-bottom: 10px;
+}
+
+.buttons {
+	margin: 5px 0px;
+}
