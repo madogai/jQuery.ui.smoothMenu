@@ -1,0 +1,15 @@
+﻿.ui-smoothMenu-disabled * {
+	cursor: default;
+}
+
+.ui-smoothMenu-item {
+	padding-right: 24px;
+	position: relative;
+}
+
+.ui-smoothMenu-item .ui-icon {
+	right: 4px;
+	margin-top: -8px;
+	position: absolute;
+	top: 50%;
+}
