@@ -1,6 +1,14 @@
 ﻿SmoothMenu addon for jQuery UI
 ===
 
+Document
+---
+
+English  
+<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.en.md>
+Japanease
+<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.ja.md>
+
 License
 ---
 
