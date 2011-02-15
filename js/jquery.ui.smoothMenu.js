@@ -1,8 +1,10 @@
-﻿/// <reference path="jquery-1.5.js" />
-/*!
+﻿/*!
 * SmoothMenu addon for jQuery UI
-* Copyright 2011, まどがい
+* https://github.com/madguy/jQuery.ui.smoothMenu
+
+* Copyright 2011, madguy
 * License MIT-style License.
+* http://www.opensource.org/licenses/mit-license.php
 *
 * Depends:
 *   jquery.ui.core.js
