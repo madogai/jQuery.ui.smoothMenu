@@ -4,10 +4,8 @@
 Document
 ---
 
-English  
-<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.en.md>
-Japanease
-<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.ja.md>
+<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.en.md>(English)  
+<https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.ja.md>(Japanease)  
 
 License
 ---
