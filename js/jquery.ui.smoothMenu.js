@@ -187,10 +187,9 @@
 			})();
 			// 先にコンテナは表示状態にする必要があります。
 			$container.show();
-			// 表示要素を図らないと正確に大きさが取得できない場合があるので、こういう取り方をします。
-			var $childNodes = options.childNodes;
-			var height = ($childNodes.outerHeight(true) || 0) * $childNodes.length;
-			var width = ($childNodes.outerWidth(true) || 0);
+			// Marginはプラグイン側で移動させるので取得しません。
+			var height = $parent.outerHeight() || 0;
+			var width = $parent.outerWidth() || 0;
 			$container.css({
 				left: String(offset.left + extendWidth) + 'px',
 				height: String(height) + 'px',
@@ -307,7 +306,7 @@
 	});
 
 	$.extend($.ui.smoothMenu, {
-		version: '0.2.3'
+		version: '0.2.4'
 	});
 
 })(jQuery);
