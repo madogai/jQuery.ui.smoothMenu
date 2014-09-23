@@ -10,7 +10,7 @@ Japanease <https://github.com/madguy/jQuery.ui.smoothMenu/wiki/README.ja.md>
 License
 ---
 
-Copyright 2011, まどがい  
+Copyright 2011-2014, まどがい  
 MIT-style License.
 
 Inspired by MenuMatic  
@@ -106,11 +106,3 @@ beforeShow|smoothmenubeforeshow|リストが開かれる前に発生するイベ
 onShow|smoothmenuonshow|リストが開かれた後に発生するイベントです。
 beforeHide|smoothmenubeforehide|リストが閉じられる前に発生するイベントです。event.preventDefault()を呼ぶか、falseをreturnすると動作を中断できます。
 onHide|smoothmenuberonhide|リストが閉じられた後に発生するイベントです。
-
-Advertisement
----
-
-作者は以下のサイトを運営しています。よければご覧ください。
-
-*ToNaMeT*  
-<http://www.tonamet.com>
