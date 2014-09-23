@@ -4,6 +4,7 @@
 	<meta charset='utf-8'>
 	<title>jQuery.ui.smoothMenu @ GitHub</title>
 	<link type="text/css" href="site.css" rel="stylesheet" />
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 	<link type="text/css" href="jquery-ui-smoothMenu.css" rel="stylesheet" />
 	<style type="text/css">
 		ul {
@@ -40,16 +41,9 @@
 			clear: both;
 		}
 	</style>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="jquery.ui.smoothMenu.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#switcher').themeswitcher({
-				loadTheme: 'UI lightness'
-			});
-		});
-	</script>
 </head>
 <body>
 	<a href="http://github.com/madguy/jQuery.ui.smoothMenu">
@@ -61,8 +55,6 @@
 			<span class="small">by <a href="http://github.com/madguy">madguy</a></span>
 		</h1>
 		<div class="demo">
-			<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
-			<div id="switcher"></div>
 			<div class="buttons">
 				<button onclick="$('#smooth_menu_1 > li').smoothMenu('enable');">Enable</button>
 				<button onclick="$('#smooth_menu_1 > li').smoothMenu('disable');">Disabled</button>
